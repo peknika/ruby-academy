@@ -1,0 +1,13 @@
+version: '2.2'
+
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PORT=3306
+      - MYSQL_LOWER_CASE_TABLE_NAMES=0
+    ports:
+      - 3306:3306
+    volumes:
+      - ./.docker/mysql/master/data:/var/lib/mysql:delegated
