@@ -1,2 +1,16 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="card w-100">
+  <div class="card-body">
+    <div class="d-flex justify-content-lg-start">
+      <%= form_with(model: @user, url: avatar_url ) do |f| %>
+        <%= image_tag get_avatar(@user), class: 'rounded-circle avatar'%>
+      <% end %>
+      <p><%= @user.full_name %></p>
+    </div>
+    <ul class="d-flex justify-content-between">
+      <li>Photos <span class="count"><%= @posts.size %></span></li>
+      <li>Followers <span class="count">50</span></li>
+      <li>Following <span class="count">130</span></li>
+    </ul>
+  </div>
+</div>
+<%= render 'posts/images' %>

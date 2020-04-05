@@ -1,0 +1,15 @@
+<div class="card-columns">
+  <% @posts %>
+  <% @posts.each do |post| %>
+    <div class="card">
+      <div class="card-body p-1">
+        <%= link_to(image_tag(post.thumbnail, class: 'd-block w-100'), post_path(post.id)) %>
+        <p class="my-1"><%= post.description %></p>
+        <ul class="list-unstyled d-flex justify-content-end">
+          <li><%=link_to fa_icon "heart" %></li>
+          <li><%=link_to fa_icon("comment"), post_path(post.id) %></li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
