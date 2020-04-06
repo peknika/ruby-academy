@@ -5,6 +5,17 @@ class UsersController < ApplicationController
   end
 
   def upload_avatar
+    @user = User.find_by(id: current_user.id)
+    @user.update_attributes(user_params)
+    if @user.save
+      redirect_back fallback_location: edit_user_registration_path
+      flash[:success] = "Nice one!"
+    end
+  end
 
+  private
+
+  def user_params
+    params.require(:user).permit(:avatar)
   end
 end

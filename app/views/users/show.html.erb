@@ -1,11 +1,11 @@
 <div class="card w-100">
+  <div class="card-header">
+    <ul class="list-unstyled d-flex justify-content-between">
+      <%= image_tag get_avatar(@user), class: 'rounded-circle' %>
+      <h3 class="card-title align-self-center"><%= @user.full_name %></h3><br>
+    </ul>
+  </div>
   <div class="card-body">
-    <div class="d-flex justify-content-lg-start">
-      <%= form_with(model: @user, url: avatar_url ) do |f| %>
-        <%= image_tag get_avatar(@user), class: 'rounded-circle avatar'%>
-      <% end %>
-      <p><%= @user.full_name %></p>
-    </div>
     <ul class="d-flex justify-content-between">
       <li>Photos <span class="count"><%= @posts.size %></span></li>
       <li>Followers <span class="count">50</span></li>

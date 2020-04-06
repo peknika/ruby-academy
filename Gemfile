@@ -28,6 +28,7 @@ gem 'pry-rails'
 # Use Active Storage variant
 gem 'active_storage_drag_and_drop'
 gem "mini_magick"
+gem "image_processing"
 
 
 # Reduces boot times through caching; required in config/boot.rb
