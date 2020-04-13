@@ -16,6 +16,8 @@ development:
 test:
   <<: *default
   database: ruby_academy_test
+  username: user_for_test
+  password: user_for_test
 
 production:
   <<: *default

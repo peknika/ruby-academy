@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
   patch '/avatar', to: 'users#upload_avatar'
   resources :posts do
-    resources :comments
+    resources :comments, only: [:create, :destroy]
   end
+  resources :relationships, only: [:create, :destroy]
   root 'posts#index'
 end
