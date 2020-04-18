@@ -1,0 +1,12 @@
+<% @post.comments.each do |c| %>
+  <div>
+    <div class="row">
+      <%= image_tag get_avatar(c.user), class: 'rounded-circle thumbnail' %>
+      <h5 class="font-weight-bold"><%= c.user.full_name %></h5>
+      <% if c.user.id == current_user.id%>
+      <%= link_to fa_icon("times"), post_comment_path(@post, c), method: :delete, class: 'pull-right' %>
+      <% end %>
+    </div>
+    <p><%= c.content %></p>
+  </div>
+<% end %>

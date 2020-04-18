@@ -3,12 +3,17 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      redirect_back fallback_location: post_path(@comment.post_id)
+      redirect_back fallback_location: root_url
     end
   end
 
   def destroy
-
+    @comment = Comment.find(params[:id])
+    if @comment.user_id == current_user.id
+      if @comment.destroy
+        redirect_back fallback_location: root_url
+      end
+    end
   end
 
   private

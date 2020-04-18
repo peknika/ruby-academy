@@ -3,13 +3,18 @@
     <ul class="list-unstyled d-flex justify-content-between">
       <%= image_tag get_avatar(@user), class: 'rounded-circle' %>
       <h3 class="card-title align-self-center"><%= @user.full_name %></h3><br>
+      <% if @user == current_user %>
+        <%= link_to fa_icon("ellipsis-h"), edit_user_registration_path %>
+      <% else %>
+        <%= render 'users/follow_form' %>
+      <% end %>
     </ul>
   </div>
   <div class="card-body">
     <ul class="d-flex justify-content-between">
       <li>Photos <span class="count"><%= @posts.size %></span></li>
-      <li>Followers <span class="count">50</span></li>
-      <li>Following <span class="count">130</span></li>
+      <li>Followers <span class="count"><%= @user.passive_relationships.count %></span></li>
+      <li>Following <span class="count"><%= @user.active_relationships.count %></span></li>
     </ul>
   </div>
 </div>

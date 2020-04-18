@@ -1,14 +1,15 @@
 <div class="col-md-6 offset-md-3">
   <div class="card">
-    <div class="card-header">
-      <ul class="list-unstyled d-flex justify-content-between">
-        <li><%= image_tag get_avatar(@post.user), class: 'rounded-circle' %>
-        </li>
-        <li><h2><%= @post.user.full_name %></h2></li>
-        <br>
-      </ul>
-    </div>
-    <% @post %>
+    <%= link_to profile_path(@post.user.id) do %>
+      <div class="card-header">
+        <ul class="list-unstyled d-flex justify-content-between">
+          <li><%= image_tag(get_avatar(@post.user), class: 'rounded-circle') %>
+          </li>
+          <li><h2><%= @post.user.full_name %></h2></li>
+          <br>
+        </ul>
+      </div>
+    <% end %>
     <div class="card-body">
       <%= link_to(image_tag(@post.thumbnail, class: 'd-block w-100'), post_path(@post.id)) %>
       <div class="card-text">
@@ -23,21 +24,9 @@
         </h6>
       </div>
       <div class="card-text" id="comment-<%= @post.id %>">
-        <% @post.comments.each do |c| %>
-          <div>
-            <div class="row">
-              <%= image_tag get_avatar(c.user), class: 'rounded-circle thumbnail' %>
-              <h5 class="font-weight-bold"><%= c.user.full_name %></h5>
-            </div>
-            <p><%= c.content %></p>
-          </div>
-        <% end %>
+        <%= render 'comments/comments' %>
       </div>
-      <%= form_with(model: @comment, url: post_comments_path(@post)) do |f| %>
-        <%= f.text_field "comment[content]", placeholder: 'Add a comment...', class: 'form-control border-0' %>
-        <%= f.submit 'Post', class: 'btn btn-outline-secondary' %>
-        <%= hidden_field_tag "comment[post_id]", @post.id %>
-      <% end %>
+      <%= render 'comments/comment_form' %>
     </div>
   </div>
 </div>

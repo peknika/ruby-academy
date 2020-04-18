@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find_by(id: current_user.id)
+    @user = User.find(params[:id])
     @posts = @user.posts.order(created_at: :desc)
   end
 
@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: current_user.id)
     @user.update_attributes(user_params)
     if @user.save
-      redirect_back fallback_location: edit_user_registration_path
+      redirect_back fallback_location: root_url
       flash[:success] = "Nice one!"
     end
   end

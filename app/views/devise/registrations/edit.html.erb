@@ -10,7 +10,7 @@
           <div class="form-group avatar">
             <%= f.drag_and_drop_file_field :avatar, "Avatar" %>
           </div>
-          <%= f.submit 'Upload', class: 'btn btn-outline-secondary' %>
+          <%= f.submit 'Upload', class: 'btn btn-outline-secondary btn-block' %>
         <% end %>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <div class="form-group">
