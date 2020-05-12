@@ -21,16 +21,13 @@ import ActiveStorageDragAndDrop from 'active_storage_drag_and_drop'
 
 ActiveStorageDragAndDrop.start()
 
-function main() {
-    console.log($(".nav-item"))
+$(document).ready(function main() {
     $(".mr-auto .nav-item").bind( "click", function(event) {
         event.preventDefault();
         var clickedItem = $( this );
-        console.log($(this))
         $( ".nav-item" ).each( function() {
             $( this ).removeClass( "active" );
         });
         clickedItem.addClass( "active" );
     });
-}
-$(document).ready(main());
+});

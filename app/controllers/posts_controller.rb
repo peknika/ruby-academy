@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def index
     @posts = Post.all.limit(20)
   end
@@ -9,10 +10,21 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+
     if @post.save
-      redirect_to @post
-    else
-      render :new
+      redirect_to @post , flash: { success: "Post published!" }
+      return
+    end
+
+    render :new, flash: { alert: "Error" }
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    authorize @post
+
+    if @post.destroy
+      redirect_back fallback_location: root_url
     end
   end
 

@@ -1,12 +1,23 @@
 <% @post.comments.each do |c| %>
-  <div>
-    <div class="row">
-      <%= image_tag get_avatar(c.user), class: 'rounded-circle thumbnail' %>
-      <h5 class="font-weight-bold"><%= c.user.full_name %></h5>
-      <% if c.user.id == current_user.id%>
-      <%= link_to fa_icon("times"), post_comment_path(@post, c), method: :delete, class: 'pull-right' %>
-      <% end %>
-    </div>
-    <p><%= c.content %></p>
+  <div class="row">
+    <li class="media">
+      <div class="media-left">
+        <%= image_tag get_avatar(c.user), class: 'rounded-circle thumbnail' %>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= c.user.full_name %>
+          <br>
+          <small>
+            <% if policy(c).destroy? %>
+              <div class="col-3 ml-auto">
+                <%= link_to "Delete", post_comment_path(@post, c), method: :delete %>
+              </div>
+            <% end %>
+          </small>
+        </h4>
+        <p><%= c.content %></p>
+      </div>
+    </li>
   </div>
 <% end %>

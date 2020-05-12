@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :image
   has_many :comments, dependent: :destroy
-  validates :post_id, presence: true
+  has_many :likes, dependent: :destroy
   validates :image, presence: true
   default_scope -> { order(created_at: :desc) }
 

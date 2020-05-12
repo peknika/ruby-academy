@@ -14,10 +14,12 @@
       <ul class="navbar-nav navbar-right">
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link" %>
-          <span class="sr-only">(current)</span>
         </li>
-        <li>
-        <%= link_to "New Post", new_path, class: "nav-link" %>
+        <li class="nav-item">
+          <%= link_to "Feed", feed_index_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+        <%= link_to "New Post", new_post_path, class: "nav-link" %>
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">

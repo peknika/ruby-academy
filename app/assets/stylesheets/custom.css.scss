@@ -19,6 +19,14 @@
   }
 }
 
+.liked, .liked:hover {
+  color: red;
+}
+
+.unliked {
+  color: #337ab7;
+}
+
 .thumbnail {
   margin-left: 15px;
   margin-right: 15px;

@@ -6,7 +6,7 @@
       <% if @user == current_user %>
         <%= link_to fa_icon("ellipsis-h"), edit_user_registration_path %>
       <% else %>
-        <%= render 'users/follow_form' %>
+        <%= render 'users/follow_form', user: @user %>
       <% end %>
     </ul>
   </div>

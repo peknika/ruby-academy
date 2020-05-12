@@ -1,0 +1,9 @@
+<%= form_with model: @like, url: post_likes_path(post) do |f| %>
+  <div><%= hidden_field_tag :post_id, post.id %></div>
+  <%= f.button :submit, class: "btn btn-link unliked" do %>
+    <%= fa_icon("heart") %>
+  <% end %>
+<% end %>
+
+
+

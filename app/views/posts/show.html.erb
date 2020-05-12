@@ -3,20 +3,21 @@
     <%= link_to profile_path(@post.user.id) do %>
       <div class="card-header">
         <ul class="list-unstyled d-flex justify-content-between">
-          <li><%= image_tag(get_avatar(@post.user), class: 'rounded-circle') %>
+          <li><%= image_tag get_avatar(@post.user), class: 'rounded-circle' %>
           </li>
           <li><h2><%= @post.user.full_name %></h2></li>
           <br>
         </ul>
       </div>
     <% end %>
+    <div class="card-header">
+      <small class="float-sm-left"><%= render "likes/likes_form", post: @post  %></small>
+      <small class="float-sm-right"><%= render "users/follow_form", user: @post.user %></small>
+    </div>
     <div class="card-body">
-      <%= link_to(image_tag(@post.thumbnail, class: 'd-block w-100'), post_path(@post.id)) %>
+      <%= link_to image_tag(@post.thumbnail, class: 'd-block w-100'), post_path(@post.id) %>
       <div class="card-text">
-        <ul class="list-unstyled d-flex justify-content-between">
-          <li class="my-1"><%= @post.description %></li>
-          <li><%= fa_icon "heart" %></li>
-        </ul>
+        <%= @post.description %>
         <h6 class="mb-2 text-muted text-right">
           <% if @post.created_at != nil %>
             <%= distance_of_time_in_words_to_now(@post.created_at) %> ago

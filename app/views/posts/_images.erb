@@ -2,12 +2,19 @@
   <% @posts %>
   <% @posts.each do |post| %>
     <div class="card">
+      <div class="card-header">
+        <small>
+          <h6><%= post.user.full_name %></h6>
+        </small>
+      </div>
       <div class="card-body p-1">
         <%= link_to(image_tag(post.thumbnail, class: 'd-block w-100'), post_path(post.id)) %>
         <p class="my-1"><%= post.description %></p>
-        <div class="float-right">
-          <%=link_to fa_icon "heart" %>
-          <%=link_to fa_icon("comment"), post_path(post.id) %>
+        <div class="float-sm-left">
+          <%= render "likes/likes_form", post: post %>
+        </div>
+        <div class="float-sm-right">
+          <%= link_to fa_icon("comment"), post_path(post.id), class: "btn btn-link" %>
         </div>
       </div>
     </div>

@@ -1,0 +1,7 @@
+<h1>Feed</h1>
+
+<% if @posts.any?%>
+  <%=  render 'posts/images' %>
+  <% else %>
+  <h4><%= link_to "Find some friends", root_path %> and start following them!</h4>
+<% end %>
