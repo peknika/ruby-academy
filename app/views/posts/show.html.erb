@@ -3,16 +3,22 @@
     <%= link_to profile_path(@post.user.id) do %>
       <div class="card-header">
         <ul class="list-unstyled d-flex justify-content-between">
-          <li><%= image_tag get_avatar(@post.user), class: 'rounded-circle' %>
+          <li><%= image_tag get_avatar(@post.user), class: 'thumbnail-md rounded-circle' %>
           </li>
-          <li><h2><%= @post.user.full_name %></h2></li>
+          <li><h1><%= @post.user.full_name %></h1></li>
           <br>
         </ul>
       </div>
     <% end %>
     <div class="card-header">
-      <small class="float-sm-left"><%= render "likes/likes_form", post: @post  %></small>
-      <small class="float-sm-right"><%= render "users/follow_form", user: @post.user %></small>
+      <small class="float-left" id="like-<%=@post.id %>"><%= render "likes/likes_form", post: @post %></small>
+      <small class="float-right">
+        <% if policy(@post).destroy? %>
+          <%= link_to "Delete", post_path(@post), method: :delete %>
+        <% else %>
+          <%= render "users/follow_form", user: @post.user %>
+        <% end %>
+      </small>
     </div>
     <div class="card-body">
       <%= link_to image_tag(@post.thumbnail, class: 'd-block w-100'), post_path(@post.id) %>
@@ -24,10 +30,10 @@
           <% end %>
         </h6>
       </div>
-      <div class="card-text" id="comment-<%= @post.id %>">
-        <%= render 'comments/comments' %>
+      <div id="comment-section-<%= @post.id %>">
+          <%= render 'comments/comment_form', post: @post %>
+        <%= render 'comments/comments', post: @post %>
       </div>
-      <%= render 'comments/comment_form' %>
     </div>
   </div>
 </div>

@@ -13,6 +13,7 @@
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
+
   &:hover {
     color: white;
     text-decoration: none;
@@ -25,6 +26,15 @@
 
 .unliked {
   color: #337ab7;
+}
+
+.thumbnail-md {
+  width: 150px;
+}
+
+.btn-outline-secondary:hover {
+  border-color: transparent;
+  background-color:transparent;
 }
 
 .thumbnail {

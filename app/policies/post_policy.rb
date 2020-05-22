@@ -1,4 +1,4 @@
-class CommentPolicy < ApplicationPolicy
+class PostPolicy < ApplicationPolicy
   def create?
     true
   end

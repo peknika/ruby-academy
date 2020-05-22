@@ -7,6 +7,6 @@ class Post < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
   def thumbnail
-    image.variant(resize: "300x300!")
+    image.variant(combine_options: { resize: '500x500^', extent: '500x500', gravity: 'Center' })
   end
 end

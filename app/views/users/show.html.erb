@@ -4,7 +4,7 @@
       <%= image_tag get_avatar(@user), class: 'rounded-circle' %>
       <h3 class="card-title align-self-center"><%= @user.full_name %></h3><br>
       <% if @user == current_user %>
-        <%= link_to fa_icon("ellipsis-h"), edit_user_registration_path %>
+        <%= link_to fa_icon("cog 2x"), edit_user_registration_path %>
       <% else %>
         <%= render 'users/follow_form', user: @user %>
       <% end %>

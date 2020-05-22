@@ -1,0 +1,2 @@
+document.getElementById('comment-section-<%= @post.id %>').innerHTML = "<%= j render 'comment_form', post: @post %><%= j render 'comments', post: @post %>"
+document.getElementById('comment_content').value = '';

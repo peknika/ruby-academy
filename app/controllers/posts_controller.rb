@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     authorize @post
 
     if @post.destroy
-      redirect_back fallback_location: root_url
+      redirect_to profile_path(current_user)
     end
   end
 

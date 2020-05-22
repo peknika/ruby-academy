@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   patch '/avatar', to: 'users#upload_avatar'
   resources :posts do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :index, :destroy]
     resource :likes
   end
   resources :feed, only: [:index]
