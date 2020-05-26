@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
+    content { Faker::Hipster.sentence }
     post
     user
-    content { Faker::Hipster.sentence }
   end
 end

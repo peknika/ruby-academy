@@ -1,7 +1,7 @@
 # spec/controllers/posts_controller_spec.rb
 require 'rails_helper'
 
-describe PostsController, type: :controller do
+describe PostsController do
 
   context 'user signed in' do
     login_user

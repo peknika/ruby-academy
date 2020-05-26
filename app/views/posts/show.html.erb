@@ -25,12 +25,9 @@
       <div class="card-text">
         <%= @post.description %>
         <h6 class="mb-2 text-muted text-right">
-          <% if @post.created_at != nil %>
-            <%= distance_of_time_in_words_to_now(@post.created_at) %> ago
-          <% end %>
         </h6>
       </div>
-      <div id="comment-section-<%= @post.id %>">
+      <div id="comments-<%= @post.id %>">
           <%= render 'comments/comment_form', post: @post %>
         <%= render 'comments/comments', post: @post %>
       </div>

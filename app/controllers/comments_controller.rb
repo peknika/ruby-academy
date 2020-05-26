@@ -6,20 +6,25 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      render :index
+      respond_to do |format|
+        format.html { redirect_to @post }
+        format.js { render :index }
+      end
     end
   end
 
   def index
     @post = Post.find(params[:post_id])
+
     respond_to do |format|
+      format.html { redirect_to @post }
       format.js
     end
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
-    @post = @comment.post.id
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
     authorize @comment
 
     if @comment.destroy

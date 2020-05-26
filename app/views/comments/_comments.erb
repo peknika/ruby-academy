@@ -10,6 +10,9 @@
           <%= c.user.full_name %>
           <br>
           <small>
+            <% if post.created_at.present? %>
+              <%= distance_of_time_in_words_to_now(c.created_at) %> ago
+            <% end %>
             <% if policy(c).destroy? %>
               <div class="col-3 ml-auto">
                 <%= link_to fa_icon("trash"), post_comment_path(post, c), method: :delete, remote: true %>

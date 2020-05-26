@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :username, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, case_sensitive: false
   has_one_attached :avatar
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy

@@ -48,6 +48,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+  gem 'active_storage_validations'
   gem 'faker'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

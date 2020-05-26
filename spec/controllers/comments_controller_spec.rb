@@ -1,25 +1,26 @@
 # spec/controllers/comments_controller_spec.rb
 require 'rails_helper'
 
-describe CommentsController, type: :controller do
+describe CommentsController do
+
   context 'user signed in' do
     login_user
 
     describe 'Post #create' do
       let!(:p) { create :post, user: subject.current_user }
+      before { post :create, params: { post_id: p.id, comment: attributes_for(:comment, user: subject.current_user, post: p) } }
 
-      it 'saves new post' do
-        post :create, params: { comment: attributes_for(:comment, post: p) }
-        expect(subject.post.comments).to include(assigns(:comment))
+      it 'saves new comment' do
+        expect(p.comments).to include(assigns(:comment))
       end
     end
 
     describe 'Post #destroy' do
       let!(:p) { create :post, user: subject.current_user }
-      let!(:comment) {create :comment, post: p }
+      let!(:comment) { create :comment, user: subject.current_user, post: p }
 
-      it 'removes post from table' do
-        expect { delete :destroy, params: { id: comment.id } }.to change { Comment.count }.by(-1)
+      it 'removes comment from table' do
+        expect { delete :destroy, params: { post_id: p.id, id: comment.id } }.to change { Comment.count }.by(-1)
       end
     end
   end

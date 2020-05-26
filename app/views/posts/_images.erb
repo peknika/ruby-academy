@@ -10,13 +10,17 @@
       <div class="card-body p-1">
         <%= link_to(image_tag(post.thumbnail, class: 'd-block w-100'), post_path(post.id)) %>
         <p class="my-1"><%= post.description %></p>
-        <div class="float-left" id="like-<%=post.id %>">
+        <div class="float-left" id="like-<%= post.id %>">
           <%= render "likes/likes_form", post: post %>
         </div>
         <div class="float-right">
-          <%= link_to fa_icon("comment"), post_comments_path(post.id), remote: true, class: "btn btn-link" %>
+          <%= link_to fa_icon("comment"), "#comment-section-#{ post.id }", data: { toggle: 'collapse' }, class: "btn btn-link" %>
         </div>
-        <div id="comment-section-<%= post.id%>">
+        <div class="collapse" id="comment-section-<%= post.id %>">
+          <div id="comments-<%= post.id %>">
+            <%= render 'comments/comment_form', post: post %>
+            <%= render 'comments/comments', post: post %>
+          </div>
         </div>
       </div>
     </div>

@@ -1,0 +1,13 @@
+require 'rails_helper'
+
+describe Comment, :type => :model   do
+  let(:user) { create :user }
+  let(:post) { create :post, user: user}
+  subject { build(:comment, user: user, post: post ) }
+
+  it { should belong_to(:user) }
+  it { should belong_to(:post) }
+  it { should validate_presence_of(:user_id) }
+  it { should validate_presence_of(:post_id) }
+  it { should validate_presence_of(:content) }
+end
